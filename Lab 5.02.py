@@ -20,6 +20,8 @@ as values. Then it will prompt the user which word they are curious about. If th
 paragraph it will print the number of times it occurred.
 
 Example
+
+
 ------------
 >>> python3 word_frequency_lab.py
 What word would you like to know the frequency of? cats
@@ -48,3 +50,42 @@ example_paragraph_lower_no_punctuation = example_paragraph_lower.replace(".", ""
 #convert paragraph into a list of individual strings
 example_word_list = example_paragraph_lower_no_punctuation.split(" ")
 '''
+
+example_paragraph = '''
+It was a beautiful day in New York City. Our hero Ariana Grande was on a walk 
+from the Standard to Duane Reade. Ariana Grande was walking rather quickly 
+because she had lived in New York for a few months. All of a sudden a slimy 
+donut appeared out of nowhere. Ariana Grande decided to prance foolishly 
+instead of dealing with the situation. Thrown off from Duane Reade Ariana Grande 
+decides to go to Times Square instead. What a beautiful day in New York.
+'''
+
+#make all letters lowercase
+example_paragraph_lower = example_paragraph.lower()
+
+#remove all periods and \n
+example_paragraph_lower_no_punctuation = example_paragraph_lower.replace(".", "")
+example_paragraph_lower_no_punctuation = example_paragraph_lower_no_punctuation.replace("\n", "")
+
+#convert paragraph into a list of individual strings
+example_word_list = example_paragraph_lower_no_punctuation.split(" ")
+
+#create dictionary to store key value pairs
+word_dict = {}
+
+#populate word_dict
+for word in example_word_list:
+    if word in word_dict:
+        word_dict[word] += 1
+    else:
+        word_dict[word] = 1
+
+while True:
+    user_choice = input("What word would you like to know the frequency of? ")
+
+    if user_choice in word_dict:
+        print(f"{user_choice} appears {word_dict[user_choice]} times")
+    elif user_choice == 'q':
+        break
+    else:
+        print("this word does not appear in the dictionary")
