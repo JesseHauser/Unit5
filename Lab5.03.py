@@ -43,3 +43,27 @@ Use split() to allow the user to input add Friday watch tv and relax.  Create a 
 that doesn't allow any duplicates across any of the days. Make sure when you add a to-do item that it 
 doesn't exist in the to-do lists of any of the days before adding.
 '''
+def add():
+    day = input("what day would you like to add on")
+    adding = input(f"what task would you like to add to {day} ")
+
+    if day in my_to_do_list:
+        my_to_do_list[day].append(adding)
+    else:
+        my_to_do_list[day] = [adding]
+
+my_to_do_list = {}
+
+while True:
+    user_input = input("What would you like to do ('add' , 'get' or 'break')?")
+    if user_input == 'get':
+        choice = input("what day would you like to see")
+        if choice in my_to_do_list:
+            print(choice)
+    if user_input == 'add':
+        add()
+    if user_input == 'break':
+        break
+    print(my_to_do_list)
+    
+
