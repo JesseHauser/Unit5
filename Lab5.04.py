@@ -75,3 +75,55 @@ most frequent to least frequent.
 
 Change the code to find the least frequent words.
 '''
+
+example_paragraph = '''
+I am Sam. I am Sam. Sam-I-am.
+​
+That Sam-I-am! That Sam-I-am!
+I do not like that Sam-I-am!
+​
+Would you like green eggs and ham?
+​
+I do not like them, Sam-I-am.
+I do not like green eggs and ham.
+​
+Would you like them here or there?
+​
+I would not like them here or there.
+I would not like them anywhere.
+I do not like green eggs and ham.
+I do not like them, Sam-I-am.
+​
+Would you like them in a house?
+Would you like them with a mouse?
+​
+I do not like them in a house.
+I do not like them with a mouse.
+I do not like them here or there.
+I do not like them anywhere.
+I do not like green eggs and ham.
+I do not like them, Sam-I-am.
+'''
+
+word_dict = {}
+
+example_word_list = example_paragraph.split(" ")
+
+for word in example_word_list:
+    if word in word_dict:
+        word_dict[word] += 1
+    else:
+        word_dict[word] = 1
+
+    if word_dict[word] >= 10:
+        print(word)
+
+while True:
+    user_choice = input("What word would you like to know the frequency of? ")
+
+    if user_choice in word_dict:
+        print(f"{user_choice} appears {word_dict[user_choice]} times")
+    elif user_choice == 'q':
+        break
+    else:
+        print("this word does not appear in the dictionary")
